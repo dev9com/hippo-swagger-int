@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" sv:name="hst:hosts">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>hst:virtualhosts</sv:value>
+  </sv:property>
+  <sv:property sv:name="hst:defaultcontextpath" sv:type="String">
+    <sv:value>/site</sv:value>
+  </sv:property>
+  <sv:node sv:name="dev-localhost">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hst:virtualhostgroup</sv:value>
+    </sv:property>
+    <sv:property sv:name="hst:cmslocation" sv:type="String">
+      <sv:value>http://localhost:8080/cms</sv:value>
+    </sv:property>
+    <sv:property sv:name="hst:defaultport" sv:type="Long">
+      <sv:value>8080</sv:value>
+    </sv:property>
+    <sv:node sv:name="localhost">
+      <sv:property sv:name="jcr:primaryType" sv:type="Name">
+        <sv:value>hst:virtualhost</sv:value>
+      </sv:property>
+      <sv:node sv:name="hst:root">
+        <sv:property sv:name="jcr:primaryType" sv:type="Name">
+          <sv:value>hst:mount</sv:value>
+        </sv:property>
+        <sv:property sv:name="hst:channelpath" sv:type="String">
+          <sv:value>/hst:hst/hst:channels/hipposwaggerint</sv:value>
+        </sv:property>
+        <sv:property sv:name="hst:mountpoint" sv:type="String">
+          <sv:value>/hst:hst/hst:sites/hipposwaggerint</sv:value>
+        </sv:property>
+        <sv:node sv:name="rest">
+          <sv:property sv:name="jcr:primaryType" sv:type="Name">
+            <sv:value>hst:mount</sv:value>
+          </sv:property>
+          <sv:property sv:name="hst:alias" sv:type="String">
+            <sv:value>rest</sv:value>
+          </sv:property>
+          <sv:property sv:name="hst:isSite" sv:type="Boolean">
+            <sv:value>false</sv:value>
+          </sv:property>
+          <sv:property sv:name="hst:ismapped" sv:type="Boolean">
+            <sv:value>false</sv:value>
+          </sv:property>
+          <sv:property sv:name="hst:namedpipeline" sv:type="String">
+            <sv:value>JaxrsRestPlainPipeline</sv:value>
+          </sv:property>
+          <sv:property sv:name="hst:types" sv:type="String" sv:multiple="true">
+            <sv:value>rest</sv:value>
+          </sv:property>
+        </sv:node>
+      </sv:node>
+    </sv:node>
+  </sv:node>
+</sv:node>
