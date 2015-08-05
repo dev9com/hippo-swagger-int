@@ -16,21 +16,17 @@
 
 package com.dev9.hippo.rest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+import com.dev9.hippo.beans.ContentDocument;
+import com.dev9.hippo.beans.PageableContentDocument;
+import io.swagger.annotations.*;
 import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.cms7.essentials.components.rest.BaseRestResource;
 import org.onehippo.cms7.essentials.components.rest.ctx.DefaultRestContext;
-import com.dev9.hippo.beans.ContentDocument;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 /**
  * @version "$Id$"
@@ -39,31 +35,31 @@ import com.dev9.hippo.beans.ContentDocument;
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
 @Path("/ContentDocument/")
-@Api(value ="/ContentDocument", description = "ContentDocument REST Operations")
+@Api(value = "/ContentDocument", description = "ContentDocument REST Operations")
 public class ContentDocumentResource extends BaseRestResource {
-
 
     @GET
     @Path("/")
-    @ApiOperation(value = "Get all ContentDocument beans.", response = ContentDocument.class)
+    @ApiOperation(value = "Get all ContentDocument beans.", response = PageableContentDocument.class)
     public Pageable<ContentDocument> index(@Context HttpServletRequest request) {
         return findBeans(new DefaultRestContext(this, request), ContentDocument.class);
     }
 
     @GET
     @Path("/page/{page}")
-    @ApiOperation(value = "Get page of ContentDocument beans.", response = ContentDocument.class)
-    public Pageable<ContentDocument> page(@Context HttpServletRequest request, @PathParam("page") int page) {
+    @ApiOperation(value = "Get page of ContentDocument beans.", response = PageableContentDocument.class)
+    public Pageable<ContentDocument> page(@Context HttpServletRequest request,
+                                          @PathParam("page") @ApiParam("page number to return") int page) {
         return findBeans(new DefaultRestContext(this, request, page, DefaultRestContext.PAGE_SIZE), ContentDocument.class);
     }
 
-
     @GET
     @Path("/page/{page}/{pageSize}")
-    @ApiOperation(value = "Get page of ContentDocument beans with specified page size.", response = ContentDocument.class)
-    public Pageable<ContentDocument> pageForSize(@Context HttpServletRequest request, @PathParam("page") int page, @PathParam("pageSize") int pageSize) {
+    @ApiOperation(value = "Get page of ContentDocument beans with specified page size.", response = PageableContentDocument.class)
+    public Pageable<ContentDocument> pageForSize(@Context HttpServletRequest request,
+                                                 @PathParam("page") @ApiParam("page number to return") int page,
+                                                 @PathParam("pageSize") @ApiParam("number of results per page") int pageSize) {
         return findBeans(new DefaultRestContext(this, request, page, pageSize), ContentDocument.class);
     }
-
 
 }

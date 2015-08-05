@@ -25,11 +25,10 @@
   <import resource="classpath:/org/hippoecm/hst/site/optional/jaxrs/SpringComponentManager-rest-content-pipeline.xml"/>
 
   <!-- Swagger API listing resource -->
-  <bean id="swaggerResourceJSON" class="com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON" />
+  <bean id="apiListingResource" class="com.dev9.hippo.rest.HippoApiListingResource" />
 
   <!-- Swagger writers -->
-  <bean id="resourceWriter" class="com.wordnik.swagger.jaxrs.listing.ResourceListingProvider" />
-  <bean id="apiWriter" class="com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider" />
+  <bean id="swaggerSerializers" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
 
   <bean id="customRestPlainResourceProviders" class="org.springframework.beans.factory.config.ListFactoryBean">
     <property name="sourceList">
@@ -41,7 +40,7 @@
         </bean>
         <bean class="org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider">
           <constructor-arg>
-            <ref bean="swaggerResourceJSON" />
+            <ref bean="apiListingResource" />
           </constructor-arg>
         </bean>
       </list>
@@ -52,14 +51,13 @@
   <bean id="customJaxrsRestEntityProviders" class="org.springframework.beans.factory.config.ListFactoryBean">
     <property name="sourceList">
       <list>
-        <ref bean="resourceWriter" />
-        <ref bean="apiWriter" />
+        <ref bean="swaggerSerializers" />
       </list>
     </property>
   </bean>
 
   <!-- this scans the classes for resources -->
-  <bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
+  <bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
     <property name="resourcePackage" value="com.dev9.hippo.rest"/>
     <property name="version" value="1.0.0"/>
     <property name="basePath" value="http://localhost:8080/site/rest"/>

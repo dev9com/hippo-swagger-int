@@ -162,6 +162,9 @@
   <logger name="com.wordnik">
     <level value="debug"/>
   </logger>
+  <logger name="io.swagger">
+    <level value="info"/>
+  </logger>
   <logger name="org.reflections">
     <level value="debug"/>
   </logger>

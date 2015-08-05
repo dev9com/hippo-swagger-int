@@ -9,7 +9,7 @@
   </parent>
 
   <name>Hippo Swagger Integration</name>
-  <description>Hippo Swagger Integration</description>
+  <description>Hippo ` Integration</description>
   <groupId>com.dev9</groupId>
   <artifactId>hippo-swagger-int</artifactId>
   <version>0.0.0-SNAPSHOT</version>

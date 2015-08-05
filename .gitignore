@@ -14,3 +14,6 @@ hs_err_pid*
 # Project files
 .idea/
 *.iml
+
+# Maven transient files
+**/target/*

@@ -6,17 +6,18 @@ Document Location
 
 When running locally, the swagger documentation can be found at the following locations:
 
- - Swagger api docs: http://localhost:8080/site/rest/api-docs
+ - Swagger api docs: http://localhost:8080/site/rest/swagger.json
  - Swagger ui: http://localhost:8080/site/swagger
 
 How to Add to a Project
 -----------------------
 
 1. Add the swagger dependency to your site:
-```<dependency>
-<groupId>com.wordnik</groupId>
-<artifactId>swagger-jaxrs_2.10</artifactId>
-<version>1.3.12</version>
+```dependency
+<dependency>
+  <groupId>io.swagger</groupId>
+  <artifactId>swagger-jaxrs</artifactId>
+  <version>1.5.0</version>
 </dependency>
 ```
 

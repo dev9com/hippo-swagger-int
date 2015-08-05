@@ -34,7 +34,7 @@
             if (url && url.length > 1) {
                 url = decodeURIComponent(url[1]);
             } else {
-                url = "http://localhost:8080/site/rest/api-docs";
+                url = "http://localhost:8080/site/rest/swagger.json";
             }
 
             // Pre load translate...
