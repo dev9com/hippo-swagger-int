@@ -24,6 +24,12 @@
   <import resource="classpath:/org/hippoecm/hst/site/optional/jaxrs/SpringComponentManager-rest-plain-pipeline.xml"/>
   <import resource="classpath:/org/hippoecm/hst/site/optional/jaxrs/SpringComponentManager-rest-content-pipeline.xml"/>
 
+  <!-- cors support -->
+  <bean id="jaxrsRestCorsFilter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/>
+
+  <!-- xml provider -->
+  <bean id="jacksonXmlProvider" class="com.fasterxml.jackson.jaxrs.xml.JacksonJaxbXMLProvider"/>
+
   <!-- Swagger API listing resource -->
   <bean id="apiListingResource" class="com.dev9.hippo.rest.HippoApiListingResource" />
 
@@ -52,6 +58,8 @@
     <property name="sourceList">
       <list>
         <ref bean="swaggerSerializers" />
+        <ref bean="jaxrsRestCorsFilter"/>
+        <ref bean="jacksonXmlProvider"/>
       </list>
     </property>
   </bean>
@@ -60,7 +68,7 @@
   <bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
     <property name="resourcePackage" value="com.dev9.hippo.rest"/>
     <property name="version" value="1.0.0"/>
-    <property name="basePath" value="http://localhost:8080/site/rest"/>
+    <property name="basePath" value="site/rest"/>
     <property name="title" value="Hippo Swagger Integration Demo"/>
     <property name="description" value="Demonstrates how to Integrate Swagger with Hippo CMS"/>
     <property name="contact" value="david.drake@dev9.com"/>

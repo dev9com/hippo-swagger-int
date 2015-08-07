@@ -96,6 +96,20 @@
       <version>1.5.0</version>
     </dependency>
 
+    <!-- cors support -->
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-security-cors</artifactId>
+      <version>${cxf.version}</version>
+    </dependency>
+
+    <!-- work around for https://issues.onehippo.com/browse/ESSENTIALS-719 -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-xml-provider</artifactId>
+      <version>2.4.5</version>
+    </dependency>
+
     <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymock</artifactId>
